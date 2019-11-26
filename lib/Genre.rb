@@ -1,9 +1,11 @@
+require 'pry'
 class Genre 
-  attr_accessor :name 
+  attr_accessor :name, :songs 
   @@all = []
   
   def initialize(name)
     @name = name 
+    @songs = []
     @@all << self 
   end 
   
@@ -23,5 +25,9 @@ class Genre
     genres = self.new(genre)
     @@all << genre
     genres
+  end 
+  
+  def genre=(song)
+    
   end 
 end 
