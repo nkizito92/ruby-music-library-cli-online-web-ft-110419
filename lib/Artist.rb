@@ -40,7 +40,6 @@ class Artist
   end 
   
   def genres
-    # binding.pry
     Genre.all
   end 
 end 
