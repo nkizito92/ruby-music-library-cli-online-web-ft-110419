@@ -27,7 +27,5 @@ class Genre
     genres
   end 
   
-  def genre=(song)
-    
-  end 
+  
 end 
