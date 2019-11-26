@@ -1,13 +1,12 @@
 require 'pry'
 class Song 
-  extend Concerns::ModuleName
+  extend Concerns::Findable
   attr_accessor :name, :artist, :genre 
   @@all = []
   def initialize(name, artist=nil, genre=nil)
     @name = name 
     self.artist = artist if artist  
     self.genre = genre if genre
-    @@all << self
   end 
   
   def self.all 
