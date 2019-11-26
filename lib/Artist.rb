@@ -37,4 +37,9 @@ class Artist
       @songs << song
      end
   end 
+  
+  def genres
+    # binding.pry
+    Genre.all
+  end 
 end 

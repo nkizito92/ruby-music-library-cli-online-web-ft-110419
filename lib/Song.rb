@@ -1,12 +1,13 @@
 require 'pry'
 class Song 
+  extend Concerns::ModuleName
   attr_accessor :name, :artist, :genre 
   @@all = []
   def initialize(name, artist=nil, genre=nil)
     @name = name 
     self.artist = artist if artist  
     self.genre = genre if genre
-    save
+    @@all << self
   end 
   
   def self.all 
@@ -21,10 +22,10 @@ class Song
     @@all << self 
   end 
   
-  def self.create(song) 
-    songs = self.new(song)
-    @@all << songs
-    songs
+  def self.create(name) 
+    song = self.new(name)
+    song.save
+    song
   end 
   
   def artist=(artist)
@@ -32,8 +33,21 @@ class Song
      artist.add_song(self)
   end 
   def genre=(genre)
-    binding.pry
-    
+     @genre = genre
+     if genre.songs.include? self
+       genre.songs 
+      else 
+        # binding.pry
+        genre.songs << self
+      end 
   end 
+  
+  # def self.find_by_name(song_name)
+  #   @@all.detect {|song| song.name == song_name}
+  # end 
+  
+  # def self.find_or_create_by_name(find_name)
+  #     find_by_name(find_name)  || create(find_name)
+  # end 
 
 end 
