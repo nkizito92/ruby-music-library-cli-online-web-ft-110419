@@ -30,12 +30,11 @@ class Artist
   end 
   
   def add_song(song) 
-     if song.artist != ""
+     if song.artist == self 
        song.artist
      else 
-      # binding.pry
-       colect = song.artist = self
-       @@songs << colect
+       song.artist = self
+      @songs << song
      end
   end 
 end 
