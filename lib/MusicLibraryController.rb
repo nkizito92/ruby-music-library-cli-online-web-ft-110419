@@ -85,7 +85,7 @@ class MusicLibraryController
     # put songs in emtpy array 
       inputted = (user_input.to_i) -1
     # user_input in that emtpy array in puts 
-    if inputted < order_song.length
+    if inputted < order_song.length && inputted > 0
       puts "Playing #{order_song[inputted]} by #{artist[inputted]}"
     end 
     # binding.pry
