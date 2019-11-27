@@ -61,11 +61,33 @@ class MusicLibraryController
   end 
   
   def list_songs_by_artist 
-    # binding.pry
     puts "Please enter the name of an artist:"
     user_input = gets.chomp 
     if Artist.find_by_name(user_input)
-      Song.all.sort_by {|song| song.name == song.artist}.each.with_index(1) {|song, index| puts "#{index}. #{song.name} - #{song.genre.name}"}
+      Artist.find_by_name(user_input).songs.sort_by {|song| song.name}.each.with_index(1) {|song, index| puts "#{index}. #{song.name} - #{song.genre.name}"}
     end
+  end 
+  
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    user_input = gets.chomp 
+    if Genre.find_by_name(user_input)
+      Genre.find_by_name(user_input).songs.sort_by {|genre| genre.name}.each.with_index(1) { |g, index| puts "#{index}. #{g.artist.name} - #{g.name}"}
+    end
+  end
+  
+  def play_song 
+     puts "Which song number would you like to play?"
+      order_song = Song.all.sort_by {|song| song.name}.collect { |s| s.name }
+      artist = Song.all.sort_by {|song| song.name}.collect { |s| s.artist.name }
+    user_input = gets.chomp 
+    # order song in abc order 
+    # put songs in emtpy array 
+      inputted = (user_input.to_i) -1
+    # user_input in that emtpy array in puts 
+    if inputted < order_song.length
+      puts "Playing #{order_song[inputted]} by #{artist[inputted]}"
+    end 
+    # binding.pry
   end 
 end 
