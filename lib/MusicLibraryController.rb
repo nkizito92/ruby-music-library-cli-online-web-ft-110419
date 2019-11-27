@@ -82,8 +82,6 @@ class MusicLibraryController
       order_song = sorting.collect { |s| s.name }
       artist = sorting.collect { |s| s.artist.name }
         user_input = (gets.chomp.to_i) -1
-    if user_input < order_song.length && user_input > 0
-      puts "Playing #{order_song[user_input]} by #{artist[user_input]}"
-    end 
+     puts "Playing #{order_song[user_input]} by #{artist[user_input]}" if user_input < order_song.length and user_input > 0
   end 
 end 
