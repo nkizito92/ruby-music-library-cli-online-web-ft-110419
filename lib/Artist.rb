@@ -6,7 +6,6 @@ class Artist
   def initialize(name)
     @name = name 
     @songs = []
-    @@all << self 
   end 
   
   def self.all 
@@ -23,13 +22,10 @@ class Artist
   
   def self.create(artist)
     artists = self.new(artist)
-    @@all << artists
+    artists.save
     artists 
   end 
-  def songs 
-    @songs 
-  end 
-  
+
   def add_song(song) 
      if song.artist == self 
        song.artist
@@ -40,6 +36,7 @@ class Artist
   end 
   
   def genres
-    Genre.all
+    binding.pry
+   songs.collect {|song| song.genre}.uniq
   end 
 end 
