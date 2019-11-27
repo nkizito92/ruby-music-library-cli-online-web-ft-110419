@@ -35,7 +35,7 @@ class MusicLibraryController
       when 'play song'
           play_song
      end 
-     end
+    end
      
   end 
   
@@ -55,6 +55,7 @@ class MusicLibraryController
   
   def list_genres 
     # binding.pry
-    Genre.all.sort_by {|genre| genre.name}.each.with_index(1) {|gen, index| puts "#{index}. #{gen.name}"}
+    Genre.all.sort_by {|genre| genre.name}
+     .each.with_index(1) {|gen, index| puts "#{index}. #{gen.name}"}
   end 
 end 
