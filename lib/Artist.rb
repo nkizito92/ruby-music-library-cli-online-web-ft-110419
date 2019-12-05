@@ -26,7 +26,7 @@ class Artist
     artists.save
     artists 
   end 
-f
+
   def add_song(song) 
     
       if !songs.include?(song)
